@@ -8,7 +8,7 @@ db.serialize(() => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             description TEXT NOT NULL,
-            status TEXT DEFAULT 'todo' CHECK(status IN ('todo', 'in-progress', 'done'))
+            status TEXT DEFAULT 'todo' CHECK(status IN ('todo', 'wip', 'done'))
         )
     `);
 });
