@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-const MONGODB_URI = process.env.MongoDB_Connection_String;
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://rarmenta:t3mdgqSH49xZx35w@itmd-444-back-end-dev.twepymw.mongodb.net/?retryWrites=true&w=majority&appName=ITMD-444-Back-End-Dev', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
