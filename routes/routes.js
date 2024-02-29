@@ -1,4 +1,4 @@
-// routes/taskRoutes.js
+// routes/routes.js
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/task');
@@ -6,7 +6,7 @@ const Task = require('../models/task');
 // GET all tasks
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find().maxTimeMS(30000);
     res.json(tasks);
   } catch (err) {
     res.status(500).json({ message: err.message });
