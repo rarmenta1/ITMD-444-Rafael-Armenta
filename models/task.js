@@ -24,12 +24,13 @@ class Task {
     }
 
     static create(newTask, callback) {
-        db.run('INSERT INTO tasks (title, description) VALUES (?, ?)', [newTask.title, newTask.description], function (err) {
-            if (err) {
-                return callback(err);
-            }
-            callback(null, { id: this.lastID, ...newTask, message: 'Task created' });
-        });
+      const { title, description, status } = newTask;
+      db.run('INSERT INTO tasks (title, description, status) VALUES (?, ?, ?)', [title, description, status], function (err) {
+          if (err) {
+              return callback(err);
+          }
+          callback(null, { id: this.lastID, title, description, status, message: 'Task created' });
+      });
     }
 
     static update(id, updatedTask, callback) {
